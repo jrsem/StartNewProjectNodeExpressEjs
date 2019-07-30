@@ -1,0 +1,88 @@
+Initialize Node.js Project
+--------------------------
+Next, initialize new Node.js project by executing:
+$npm init
+
+Install Dependencies
+--------------------
+First, install dev dependencies that we’ll going to need during development and to run the app locally:
+$npm install --save-dev babel babel-cli babel-preset-es2015 babel-preset-stage-0 nodemon
+
+
+And next, install all of the rest:
+$npm install --save body-parser express moment morgan
+
+
+
+Create .babelrc File
+--------------------
+
+"subl .babelrc"
+
+Create a new file called .babelrc with the following content:
+
+{
+  "presets": ["es2015", "stage-0"]
+}
+
+
+NB)That will allow us to use ES6 features of JavaScript 
+that we have access to when developing React Native apps. 
+In case with React Native ES6 is enabled by default when you do "react-native init project".
+
+Add Scripts
+-----------
+Next, let’s add some scripts to run the app.
+
+Open "package.json" file and find scripts object:
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+
+And update it with the following:
+
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/babel-cli/bin/babel.js ./ --source-maps --out-dir dist",
+    "start": "node_modules/nodemon/bin/nodemon.js -- node_modules/babel-cli/bin/babel-node.js server.js",
+  },
+
+NB) colocamos estes comando dentro do ""scripts"" é para evitar utilizar comando longo no terminal, com isso só utilizar o "npm":
+npm NomeScript.
+exemplo:
+npm start 
+npm build
+
+We’ll be using "nodemon" to automatically restart the server when we change anything in the code.
+
+Install engine EJS
+-------------------
+Para envia conteudo html para o browser , vamos utilizar o template engine "EJS"
+
+$npm install --save express-ejs-layouts
+
+
+
+===================================================================================================
+
+How to use this folder:
+
+depois de baixr esta pasta no github faz:
+1) entra na pasta e executar: nmp install
+NB) o seu sistema de ter bower instalado: sudo npm install -g bower
+NB) o seu sistema de ter sass instalado:
+sudo npm install -g --unsafe-perm node-sass
+
+
+2) run the app: npm start
+==============================
+RUN SASS
+
+executar sass:
+entra dentro da pasta do projeto abri um terminal e faz:
+npm run sass
+
+NB) vai gerar uma pasta css
